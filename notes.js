@@ -1,5 +1,3 @@
-console.log('Staring notes.js');
-
 const fs = require('fs');
 
 var fetchNotes = () => {
@@ -36,9 +34,14 @@ module.exports = {
         return notes.length !== remainingNotes.length;
     },
     getNote: getNote = (title) => {
-        console.log(`getting ${title}`);
+        var notes = fetchNotes();
+        return notes.filter((note) => note.title === title)[0];
     },
     getAll: getAll = () => {
-        console.log('Getting all notes');
+        return fetchNotes();
+    },
+    logNote: logNote = (note) => {
+        console.log(`Title: ${note.title}`);
+        console.log(`Body: ${note.body}`);
     }
 };
